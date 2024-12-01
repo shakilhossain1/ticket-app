@@ -1,6 +1,7 @@
 import { SignedIn, UserButton, SignInButton, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
             logo
           </Link>
 
-          <div className="">
+          <div className="lg:hidden">
             <SignedIn>
               <UserButton />
             </SignedIn>
@@ -25,8 +26,50 @@ export default function Header() {
           </div>
         </div>
 
+        {/* Search bar - full width on mobile */}
+        <div className="w-full lg:max-w-2xl">
+          <SearchBar />
+        </div>
+        <div className="hidden lg:block ml-auto">
+          <SignedIn>
+            <div className="flex items-center gap-3">
+              <Link href={"/seller"}>
+                <button className="bg-blue-600 text-white px-3 py-1.5 text-sm rounded-lg hover:bg-blue-700 transition">
+                  Sell Tickets
+                </button>
+              </Link>
+              <Link href={"/tickets"}>
+                <button className="bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+                  My Tickets
+                </button>
+              </Link>
+              <UserButton />
+            </div>
+          </SignedIn>
+          <SignedOut>
+            <button className=" bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+              Sign in
+            </button>
+          </SignedOut>
+        </div>
 
-
+        {/* mobile action button */}
+        <div className="lg:hidden w-full flex justify-center gap-3">
+          <SignedIn>
+            <div className="flex items-center gap-3">
+              <Link href={"/seller"}>
+                <button className="bg-blue-600 text-white px-3 py-1.5 text-sm rounded-lg hover:bg-blue-700 transition">
+                  Sell Tickets
+                </button>
+              </Link>
+              <Link href={"/tickets"}>
+                <button className="bg-gray-100 text-gray-800 px-3 py-1.5 text-sm rounded-lg hover:bg-gray-200 transition border border-gray-300">
+                  My Tickets
+                </button>
+              </Link>
+            </div>
+          </SignedIn>
+        </div>
       </div>
     </div>
   );
