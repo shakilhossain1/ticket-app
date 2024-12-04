@@ -23,13 +23,13 @@ export default defineSchema({
       v.literal("refunded"),
       v.literal("cancelled")
     ),
-    paymentIntendId: v.optional(v.string()),
+    paymentIntentId: v.optional(v.string()),
     amount: v.optional(v.number()),
   })
     .index("by_event", ["eventId"])
     .index("by_user", ["userId"])
     .index("by_user_event", ["userId", "eventId"])
-    .index("by_payment_intent", ["paymentIntendId"]),
+    .index("by_payment_intent", ["paymentIntentId"]),
   waitingList: defineTable({
     eventId: v.id("events"),
     userId: v.string(),
