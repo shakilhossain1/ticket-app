@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import {applyNextFixture} from "next/dist/experimental/testmode/playwright/next-fixture";
 import PurchaseTicket from "@/components/PurchaseTicket";
+import Link from "next/link";
 
 function EventCard({eventId}: { eventId: Id<"events"> }) {
     const {user} = useUser();
@@ -121,12 +122,12 @@ function EventCard({eventId}: { eventId: Id<"events"> }) {
                             You have a ticket!
                         </span>
                     </div>
-                    <button
-                        onClick={() => router.push(`/tickets/${userTicket._id}`)}
+                    <Link
+                        href={`/tickets/${userTicket._id}`}
                         className={'text-sm bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-full font-medium shadow-sm transition-colors duration-200 flex items-center gap-1'}
                     >
                         View your ticket
-                    </button>
+                    </Link>
                 </div>
             )
         }

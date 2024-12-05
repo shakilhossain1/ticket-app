@@ -2,6 +2,16 @@ import { Search } from "lucide-react";
 import Form from "next/form";
 
 export default function SearchBar() {
+  // const router = useRouter();
+  // const [query, setQuery] = useState("");
+  //
+  // const handleSearch = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (query.trim()) {
+  //     router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+  //   }
+  // };
+
   return (
     <div>
       <Form className="relative" action={"/search"}>
